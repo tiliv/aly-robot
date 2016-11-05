@@ -194,12 +194,12 @@ async def roll(ctx, ndn : str):
     roll_string = io.StringIO()
     first_roll = True
 
-    def get_die_roll(n):
+    def get_die_roll():
         if sides == 0:
             return '?'
-        return random.randint(1, n)
+        return random.randint(1, sides)
 
-    for roll in (get_die_roll(r) for r in range(dice)):
+    for roll in (get_die_roll() for r in range(dice)):
         if roll != '?':
             total += roll
         if roll == sides:
