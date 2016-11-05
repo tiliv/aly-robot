@@ -166,6 +166,12 @@ async def roll(ctx, ndn : str):
     sides = int(match.group('sides'))
     offset = int(match.group('offset') or 0)
 
+    if dice == 0:
+        await bot.say("🎲 Aayy, check it out, {user} wasting our time by asking me to roll 0 dice.".format(**{
+            'user': user,
+        }))
+        return
+
     if dice > MAX_DICE:
         await bot.say("🎲 Attention everybody @here.  We're having an intervension for {user}, who"
                 " thinks {personal_pronoun} wants to roll **{dice}** dice. Convince {pronoun} that"
