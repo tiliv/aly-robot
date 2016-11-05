@@ -193,8 +193,15 @@ async def roll(ctx, ndn : str):
     total = 0
     roll_string = io.StringIO()
     first_roll = True
-    for roll in (random.randint(1, sides) for r in range(dice)):
-        total += roll
+
+    def get_die_roll(n):
+        if sides == 0:
+            return '?'
+        return random.randint(1, n)
+
+    for roll in (get_die_roll(r) for r in range(dice)):
+        if roll != '?':
+            total += roll
         if roll == sides:
             roll = '__**{}**__'.format(roll)
         if not first_roll:
@@ -205,13 +212,20 @@ async def roll(ctx, ndn : str):
         roll_string.write(roll)
         first_roll = False
 
+    if sides:
+        full_total = total + offset
+    else:
+        full_total = '?'
+
+    total_string = '' if dice == 1 else '{}{} = '.format(
+        full_total,
+        '' if not offset else ' ({}+{})'.format(total, offset),
+    )
+
     message = "🎲 {user} rolled {total}{rolls}".format(**{
         'user': user,
         'rolls': roll_string.getvalue(),
-        'total': '' if dice == 1 else '{}{} = '.format(
-            total + offset,
-            '' if not offset else ' ({}+{})'.format(total, offset),
-        )
+        'total': total_string,
     })
     await bot.say(message)
 
