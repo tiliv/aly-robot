@@ -445,5 +445,3 @@ async def friendship_shiritori_stop(ctx):
 #         await bot.process_commands(message)
 #     else:
 #         bot.send_message(message.channel, "Game interaction expected")
-
-    
