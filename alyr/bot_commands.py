@@ -344,7 +344,7 @@ async def fortune(ctx, category='all'):
         }))
 
 @bot.command(pass_context=True)
-async def play(ctx, game : str):
+async def play(ctx, *, game : str):
     """Set the 'Playing' status to the provided game name (in quotations)."""
     await bot.say("🎮 {message}".format(**{
         'message': random.choice(PLAY_MESSAGES).format(user=ctx.message.author.mention),
