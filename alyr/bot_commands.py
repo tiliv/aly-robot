@@ -12,7 +12,7 @@ from .bot_tracker import bot, reloader
 
 
 MAX_DICE = 100
-DICEROLL_PATTERN = re.compile(r'(?P<dice>\d+)d(?P<sides>\d+)(?:\s*\+\s*(?P<offset>\d+))?')
+DICEROLL_PATTERN = re.compile(r'(?P<dice>\d+)d(?P<sides>\d+)(?:\s*\+\s*(?P<offset>\d+))?$')
 
 DEFAULT_8BALL_CHOICES = [
     "It is certain",
