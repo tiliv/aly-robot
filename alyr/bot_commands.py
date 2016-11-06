@@ -245,7 +245,7 @@ async def eightball(ctx):
             }))
 
 @eightball.command(name='add', pass_context=True)
-async def eightball_add(ctx, choice : str):
+async def eightball_add(ctx, *, choice : str):
     await bot.say("🎱 {user} added magic 8 ball choice: ``{choice}``".format(**{
         'user': ctx.message.author.mention,
         'choice': choice,
@@ -258,7 +258,7 @@ async def eightball_add(ctx, choice : str):
     GLOBAL_8BALL_CHOICES.append(choice)
 
 @eightball.command(name='remove', pass_context=True)
-async def eightball_remove(ctx, choice : str):
+async def eightball_remove(ctx, *, choice : str):
     if choice in GLOBAL_8BALL_CHOICES:
         i = GLOBAL_8BALL_CHOICES.index(choice)
         await bot.say("🎱 {user} removed magic 8 ball choice: ``{choice}``".format(**{
