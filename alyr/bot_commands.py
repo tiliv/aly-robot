@@ -280,8 +280,9 @@ async def eightball_clear(ctx):
 @eightball.command(name='reset', pass_context=True)
 async def eightball_reset(ctx):
     GLOBAL_8BALL_CHOICES[:] = DEFAULT_8BALL_CHOICES[:]
-    await bot.say("🎱 {user} reset all magic 8 ball choices to the default 20.".format(**{
+    await bot.say("🎱 {user} reset all magic 8 ball choices to the default {n_choices}.".format(**{
         'user': ctx.message.author.mention,
+        'n_choices': len(DEFAULT_8BALL_CHOICES),
     }))
 
 @eightball.command(name='list', pass_context=True)
