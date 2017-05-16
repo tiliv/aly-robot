@@ -344,6 +344,14 @@ async def fortune(ctx, category='all'):
             'error': error,
         }))
 
+@bot.command(name='ha', pass_context=True, aliases=['HA', 'hA', 'Ha', 'lulu'])
+async def lulu_laugh(ctx):
+    laugh = ''
+    for i in range(0, 25):
+        laugh += random.choice('Hh')
+        laugh += random.choice('Aa')
+    await bot.say(laugh)
+
 @bot.command(pass_context=True)
 async def play(ctx, *, game : str):
     """Set the 'Playing' status to the provided game name (in quotations)."""
