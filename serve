@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+. .venv/bin/activate
+pip install -r requirements.txt
+ALY_TOKEN=$(cat /Cloud/aly-robot.token) ./alyr.py
